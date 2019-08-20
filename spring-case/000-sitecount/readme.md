@@ -769,6 +769,8 @@ http://localhost:8080/visit?app=demo&ip=192.168.0.2&uri=http://hhui.top/home
 
 - 工程：[byron-demo-master](https://github.com/SugarMaori/byron-demo-master)
 
+- 原文章：[SpringBoot系列教程应用篇之借助Redis搭建一个简单站点统计服务](http://spring.hhui.top/spring-blog/2019/05/13/190513-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E5%BA%94%E7%94%A8%E7%AF%87%E4%B9%8B%E5%80%9F%E5%8A%A9Redis%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%AB%99%E7%82%B9%E7%BB%9F%E8%AE%A1%E6%9C%8D%E5%8A%A1/)
+
 
 
 

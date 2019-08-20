@@ -8,10 +8,10 @@
         <version>2.1.7.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.byron</groupId>
-    <artifactId>spring-boot</artifactId>
+    <groupId>com.git.byron</groupId>
+    <artifactId>java8</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot</name>
+    <name>java8</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -21,7 +21,23 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

@@ -114,7 +114,7 @@ public class VisitService {
     }
 
     /**
-     * pv 次数+1
+     * pv 次数 + 1
      *
      * @param key
      * @param uri
@@ -130,7 +130,7 @@ public class VisitService {
     }
 
     /**
-     * uv +1
+     * uv + 1
      *
      * @param key
      * @param ip
@@ -168,7 +168,7 @@ public class VisitService {
     }
 
     /**
-     * 热度，每访问一次，计数都+1
+     * 热度，每访问一次，计数都 + 1
      *
      * @param key
      * @param uri
