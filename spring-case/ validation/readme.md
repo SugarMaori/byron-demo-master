@@ -246,41 +246,42 @@ public class TypeValidationImpl implements ConstraintValidator<TypeValid,Object>
 public class GlobalExceptionHandler {
 
 
-    @ExceptionHandler(value = Exception.class)
-    public Map<String,String> globalExceptionHandleMethod(Exception ex){
-        Map<String,String> map = new HashMap<>();
-        if(ex instanceof ConstraintViolationException){
-            ConstraintViolationException exception = (ConstraintViolationException)ex;
-            map.put("msg","@Validated约束在类上：" + exception.getConstraintViolations());
-            map.put("code","1");
-        }else
-        if(ex instanceof MethodArgumentNotValidException){
-            MethodArgumentNotValidException exception = (MethodArgumentNotValidException) ex;
-            BindingResult bindingResult  = exception.getBindingResult();
-            if (bindingResult.hasErrors()){
-                List<ObjectError> list = bindingResult.getAllErrors();
-                for(ObjectError error:list){
-                    map.put("msg", error.getDefaultMessage());
-                }
-            }
-            map.put("code","2");
-        }else if(ex instanceof BindException){
-            BindException exception = (BindException) ex;
-            BindingResult bindingResult  = exception.getBindingResult();
-            if (bindingResult.hasErrors()){
-                List<ObjectError> list = bindingResult.getAllErrors();
-                for(ObjectError error:list){
-                    map.put("msg",error.getDefaultMessage());
-                }
-            }
-            map.put("code","3");
-        }
-        else{
-            map.put("msg","系统异常:" + ex.getMessage() );
-            map.put("code","4");
-        }
-        return map;
-    }
+ @ExceptionHandler(value = Exception.class)
+     public Map<String,String> globalExceptionHandleMethod(Exception ex){
+         Map<String,String> map = new HashMap<>();
+         if(ex instanceof ConstraintViolationException){
+             ConstraintViolationException exception = (ConstraintViolationException)ex;
+             Set<ConstraintViolation<?>> cv = exception.getConstraintViolations();
+             StringBuffer buffer = new StringBuffer();
+             cv.stream().forEach(excv -> buffer.append(excv.getMessage()));
+             map.put("msg",buffer.toString());
+             map.put("code","-1");
+         }else
+         if(ex instanceof MethodArgumentNotValidException){
+             MethodArgumentNotValidException exception = (MethodArgumentNotValidException) ex;
+             List<ObjectError> allErrors = exception.getBindingResult().getAllErrors();
+             StringBuffer buffer = new StringBuffer();
+             allErrors.stream().forEach(e ->{
+                 buffer.append(e.getDefaultMessage()).append(" ;");
+             });
+             map.put("msg",buffer.toString());
+             map.put("code","-2");
+         }else if(ex instanceof BindException){
+             BindException exception = (BindException) ex;
+             List<ObjectError> allErrors = exception.getAllErrors();
+             StringBuffer buffer = new StringBuffer();
+             allErrors.stream().forEach(e ->{
+                 buffer.append(e.getDefaultMessage()).append(" ;");
+             });
+             map.put("msg",buffer.toString());
+             map.put("code","-3");
+         }
+         else{
+             map.put("msg","系统异常:" + ex.getMessage() );
+             map.put("code","-4");
+         }
+         return map;
+     }
 }
 ```
 ###笔者寄语：
